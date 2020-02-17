@@ -395,3 +395,20 @@
 ## negative reaction
 * react_negative
     - utter_react_negative
+    
+## movie flow
+* greet
+    - action_greet_user
+* next_step
+    - utter_movie_start
+* next_step
+    - utter_movie_continue
+* next_step
+    - utter_movie_about
+* next_step
+    - utter_movie_follow_up
+* next_step
+    - utter_movie_end
+* affirm
+    - utter_bye
+

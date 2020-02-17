@@ -4914,6 +4914,8 @@
 - thx
 - yes thanks
 
+## intent:movies
+
 ## lookup: location
 data/nlu/lookups/location.txt
 
