@@ -332,124 +332,6 @@
 - you are made by who?
 - you are working for which company?
 
-## intent:ask_faq_rasax
-- what is Rasa X?
-- how does Rasa X work?
-- what is X?
-- can you explain rasa x to me
-- could you elaborate more about rasa x
-- tell me about Rasa X please
-- what is this rasa x thing. could you tell me more?
-- what's the purpose of Rasa X
-- whats rasax
-- is Rasa X separate from Rasa?
-- how does rasa x relate to rasa core
-- I need to know about Rasa X
-- please tell me more about rasa x
-- elaborate on rasa x
-- Can you tell me about rasa x?
-- I want information about rasa x
-- Rasa X
-- Rasa X features
-- Tell me about rasa x
-- can someone help me with infos about rasa x
-- i want to learn more about Rasa X
-- tell me what is rasa x
-- what is rasa x?
-
-## intent:ask_faq_channels
-- Can you tell which messaging channels does rasa support?
-- Channels
-- Can I use the rasa code for my own website?
-- Can I use your open source code on my website?
-- how to use rasa in salesforce
-- i want to integrate my rasa bot to webex  may i know how
-- how to setup rasax on slack
-- so... i trying to deploy my rasa bot on
-- how to use rasa caht in react application
-- how can i setup rasa in django project ?
-- how to integrate u in my react application
-- how to integrate rasa chatbot with my website
-- Is there a connector for skype?
-- DOES RASA SUPPORT MESSENGER?
-- DOES RASA SUPPORT SMS?
-- DOES RASA SUPPORT THE WHATS APP?
-- Do you know about rasa supporting channels?
-- Do you know which messaging channels rasa supports?
-- How to connect messaging channels to rasa?
-- Is rasa support message channels?
-- No, I mean how it is possible to use Skype as channel?
-- Rasa is good for messaging chanels
-- Rasa supports some messaging channels, what are those?
-- WHAT MESSAGING PORTALS DOES RASA SUPPORT?
-- What are the requirements for connecting messaging channel to rasa?
-- What channels for messaging are supported by rasa?
-- What channels for messaging does rasa support?
-- What channels of communication does rasa support?
-- What communication channels are supported by rasa?
-- What communication channels does rasa support?
-- What messaging channels are supported by rasa?
-- What messaging systems are supported by rasa?
-- channels supported by Rasa
-- i need a help to integrate rasa with a messenger
-- rasa can use which different messaging channels?
-- rasa supports which messaging channels?
-- what are the channels Rasa [NLU](product) supports
-- what are the messaging channels supported by rasa?
-- what are the messaging channels that can be used with rasa?
-- what channels do you support?
-- what channels does rasa support
-- what chat channels does rasa uses
-- which UI channel is used by Rasa ?
-- which messaging channels are compatible with rasa?
-- which messaging channels are supported by rasa?
-- which messaging channels can I use with rasa?
-- which messaging channels can be used with rasa?
-- which messaging channels does rasa support?
-- which particular messaging channels are supported by rasa?
-- what chat services do you support
-
-## intent:ask_faq_community_size
-- Did you know the size of rasa community?
-- Do you know how big the Rasa community is?
-- Do you know how many people are in the Rasa community?
-- How big is the Rasa community
-- How big is the Rasa community?
-- How big is the community?
-- How big is this community?
-- How far does the Rasa community spread?
-- How few members in the community?
-- How large is the Rasa community?
-- How large is the community?
-- How large roughly speaking is the Rasa community?
-- How many in the community?
-- How many individuals are in your community?
-- How many individuals reside in your community?
-- How many members in the community?
-- How many people are here?
-- How many people are in that community?
-- How many people are in the Rasa Community?
-- How many people are in your community
-- How many people are in your community?
-- How massive is the Rasa community?
-- How small is the community?
-- Is rasa community big?
-- Is rasa have more than 1000 members?
-- Is the Rasa Community large?
-- Is the Rasa community large?
-- Is the Rasa community medium?
-- Is the Rasa community small?
-- Is the community large?
-- What is the magnitude of the Rasa community?
-- What is the magnitude of the community?
-- What is the number of people in this community?
-- What is the rough size of the community?
-- What size is the Rasa community?
-- What's the size of the community?
-- do you have a large community
-- how big is your community
-- how many forum members do you have
-- how many people are using Rasa
 
 ## intent:ask_faq_differencecorenlu
 - DIFFERENCES BETWEEN [CORE](product) AND [NLU](product)
@@ -4915,6 +4797,23 @@
 - yes thanks
 
 ## intent:movies
+- I don't watch movies
+- I don't like movies
+- Movies are boring
+- I don't know
+- I've never seen a movie before
+- I've never watched movies
+- I don't know what a movie is
+- What is a movie
+- I don't have a favorite movie
+- I hate movies
+- I don't enjoy movies
+- I don't want to talk about movies
+- Let's talk about something else
+- Can we not talk about movies
+- Can we talk about something else
+- I don't find movies interesting
+
 
 ## lookup: location
 data/nlu/lookups/location.txt
