@@ -396,11 +396,15 @@
 * react_negative
     - utter_react_negative
     
-## movie flow
+## movie flow begin
 * greet
     - action_greet_user
 * next_step
     - utter_movie_start
+> check_movie_response
+
+## movie flow 1
+> check_movie_response
 * next_step
     - utter_movie_continue
 * next_step
@@ -411,4 +415,9 @@
     - utter_movie_end
 * affirm
     - utter_bye
+    
+## movie flow 2
+> check_movie_response
+* movies
+ - utter_bye
 

@@ -1,41 +1,20 @@
 import logging
 import uuid
 from sanic import Blueprint, response
-from sanic.request import Request
 from socketio import AsyncServer
-from typing import Optional, Text, Any, List, Dict, Iterable
+from typing import Optional, Text, Any
 from gtts import gTTS
-
 
 from rasa.core.channels.channel import InputChannel
 from rasa.core.channels.channel import UserMessage, OutputChannel
 
-import deepspeech
-from deepspeech import Model
-import scipy.io.wavfile as wav
-
 import os
-import sys
-import io
-import torch
 import time
-import numpy as np
-from collections import OrderedDict
 import urllib
 import speech_recognition as sr
-import librosa
-
-from TTS.models.tacotron import Tacotron
-from TTS.layers import *
-from TTS.utils.data import *
-from TTS.utils.audio import AudioProcessor
-from TTS.utils.generic_utils import load_config
-from TTS.utils.text import text_to_sequence
-from TTS.utils.synthesis import synthesis
-from TTS.utils.text.symbols import symbols, phonemes
-from TTS.utils.visual import visualize
 
 logger = logging.getLogger(__name__)
+
 
 def google_asr(audio_file):
     API_key = ""
@@ -62,57 +41,6 @@ def google_asr(audio_file):
     return "Error"
 
 
-def load_deepspeech_model():
-    N_FEATURES = 25
-    N_CONTEXT = 9
-    BEAM_WIDTH = 500
-    LM_ALPHA = 0.75
-    LM_BETA = 1.85
-
-    ds = Model('../deepspeech-0.6.1-models/output_graph.pbmm', BEAM_WIDTH)
-    ds.enableDecoderWithLM('../deepspeech-0.6.1-models/lm.binary', '../deepspeech-0.6.1-models/trie', LM_ALPHA, LM_BETA)
-    return ds
-
-
-def load_tts_model():
-    MODEL_PATH = 'tts_model/best_model.pth.tar'
-    CONFIG_PATH = 'tts_model/config.json'
-    CONFIG = load_config(CONFIG_PATH)
-    use_cuda = False
-
-    num_chars = len(phonemes) if CONFIG.use_phonemes else len(symbols)
-    model = Tacotron(num_chars, CONFIG.embedding_size, CONFIG.audio['num_freq'], CONFIG.audio['num_mels'], CONFIG.r,
-                     attn_windowing=False)
-
-    # num_chars = len(phonemes) if CONFIG.use_phonemes else len(symbols)
-    # model = Tacotron(num_chars, CONFIG.embedding_size, CONFIG.audio['num_freq'], CONFIG.audio['num_mels'], CONFIG.r,
-    #                  attn_windowing=False)
-
-    # load the audio processor
-    # CONFIG.audio["power"] = 1.3
-    CONFIG.audio["preemphasis"] = 0.97
-    ap = AudioProcessor(**CONFIG.audio)
-
-    # load model state
-    if use_cuda:
-        cp = torch.load(MODEL_PATH)
-    else:
-        cp = torch.load(MODEL_PATH, map_location=lambda storage, loc: storage)
-
-    # load the model
-    model.load_state_dict(cp['model'])
-    if use_cuda:
-        model.cuda()
-
-    # model.eval()
-    model.decoder.max_decoder_steps = 1000
-    return model, ap, MODEL_PATH, CONFIG, use_cuda
-
-
-#ds = load_deepspeech_model()
-#model, ap, MODEL_PATH, CONFIG, use_cuda = load_tts_model()
-
-
 class SocketBlueprint(Blueprint):
     def __init__(self, sio: AsyncServer, socketio_path, *args, **kwargs):
         self.sio = sio
@@ -136,17 +64,6 @@ class SocketIOOutput(OutputChannel):
         self.bot_message_evt = bot_message_evt
         self.message = message
 
-    # def tts(self, model, text, CONFIG, use_cuda, ap, OUT_FILE):
-    #     import numpy as np
-    #     waveform, alignment, spectrogram, mel_spectrogram, stop_tokens = synthesis(model, text, CONFIG, use_cuda, ap)
-    #     ap.save_wav(waveform, OUT_FILE)
-    #     wav_norm = waveform * (32767 / max(0.01, np.max(np.abs(waveform))))
-    #     return alignment, spectrogram, stop_tokens, wav_norm
-    #
-    # def tts_predict(self, MODEL_PATH, sentence, CONFIG, use_cuda, OUT_FILE):
-    #     align, spec, stop_tokens, wav_norm = self.tts(model, sentence, CONFIG, use_cuda, ap, OUT_FILE)
-    #     return wav_norm
-
     async def _send_audio_message(self, socket_id, response, **kwargs: Any):
         # type: (Text, Any) -> None
         """Sends a message to the recipient using the bot event."""
@@ -155,12 +72,11 @@ class SocketIOOutput(OutputChannel):
         OUT_FILE = str(ts) + '.wav'
         link = "http://localhost:8888/" + OUT_FILE
 
-
         language = 'en'
         voice = gTTS(text=response['text'], lang=language, slow=False)
         voice.save(OUT_FILE)
 
-        #wav_norm = self.tts_predict(MODEL_PATH, response['text'], CONFIG, use_cuda, OUT_FILE)
+        # wav_norm = self.tts_predict(MODEL_PATH, response['text'], CONFIG, use_cuda, OUT_FILE)
 
         await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link}, room=socket_id)
 
@@ -201,7 +117,7 @@ class SocketIOInput(InputChannel):
         self.socketio_path = socketio_path
 
     def blueprint(self, on_new_message):
-        sio = AsyncServer(async_mode="sanic", cors_allowed_origins="*")
+        sio = AsyncServer(async_mode="sanic", cors_allowed_origins=[])
         socketio_webhook = SocketBlueprint(
             sio, self.socketio_path, "socketio_webhook", __name__
         )
@@ -245,8 +161,6 @@ class SocketIOInput(InputChannel):
                 urllib.request.urlretrieve(data['message'], received_file)
                 path = os.path.dirname(__file__)
 
-                #fs, audio = wav.read("output_{0}.wav".format(sid))
-                #message = ds.stt(audio)
                 message = google_asr(received_file)
 
                 await sio.emit(self.user_message_evt, {"text": message}, room=sid)
