@@ -12,8 +12,12 @@ import os
 import time
 import urllib
 import speech_recognition as sr
+#from liwc import Liwc
+from transformers import pipeline
 
 logger = logging.getLogger(__name__)
+nlp = pipeline('sentiment-analysis')
+#liwc = Liwc("LIWC2007_English080730.dic")
 
 
 def google_asr(audio_file):
@@ -31,6 +35,8 @@ def google_asr(audio_file):
         # instead of `r.recognize_google(audio)`
         text = r.recognize_google(audio)
         print("You said: " + text)
+        #print(liwc.parse(text.split(' ')))
+        print(nlp(text))
         return text
     except sr.UnknownValueError:
         print("Google Speech Recognition could not understand audio")
@@ -117,7 +123,7 @@ class SocketIOInput(InputChannel):
         self.socketio_path = socketio_path
 
     def blueprint(self, on_new_message):
-        sio = AsyncServer(async_mode="sanic", cors_allowed_origins=[])
+        sio = AsyncServer(async_mode="sanic", cors_allowed_origins="*")
         socketio_webhook = SocketBlueprint(
             sio, self.socketio_path, "socketio_webhook", __name__
         )
