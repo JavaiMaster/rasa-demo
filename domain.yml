@@ -43,6 +43,7 @@ intents:
 - canthelp
 - contact_sales
 - deny
+- movies
 - enter_data:
     use_entities: []
 - explain
