@@ -74,6 +74,7 @@ signup_newsletter,Signup for the newsletter,
 signup_newsletter,Signup for the newsletter with {email},email
 source_code,Where can I see your source code.,
 suggestion,A suggestion of how I can improve.,
+movie_name, My favourite movie is Star Wars.,
 switch,I want to migrate.,
 switch,I want to migrate from {current_api}.,current_api
 technical_question,A technical question.,
