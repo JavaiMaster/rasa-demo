@@ -405,7 +405,7 @@
 
 ## movie flow 1
 > check_movie_response
-* next_step
+* movie_name_action
     - utter_movie_continue
 * next_step
     - utter_movie_about
