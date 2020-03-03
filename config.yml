@@ -32,6 +32,6 @@ policies:
   name: AugmentedMemoizationPolicy
 - core_threshold: 0.3
   name: TwoStageFallbackPolicy
-  nlu_threshold: 0.6
+  nlu_threshold: 0.3
 - name: FormPolicy
 - name: MappingPolicy

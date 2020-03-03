@@ -426,13 +426,13 @@ class ActionGreetUser(Action):
                 return []
             else:
                 dispatcher.utter_message(template="utter_greet")
-                #dispatcher.utter_message(template="utter_inform_privacypolicy")
-                #dispatcher.utter_message(template="utter_ask_goal")
+                # dispatcher.utter_message(template="utter_inform_privacypolicy")
+                # dispatcher.utter_message(template="utter_ask_goal")
                 return [SlotSet("shown_privacy", True)]
         elif intent[:-1] == "get_started_step" and not shown_privacy:
             dispatcher.utter_message(template="utter_greet")
             # dispatcher.utter_message(template="utter_inform_privacypolicy")
-            #dispatcher.utter_message(template=f"utter_{intent}")
+            # dispatcher.utter_message(template=f"utter_{intent}")
             return [SlotSet("shown_privacy", True), SlotSet("step", intent[-1])]
         elif intent[:-1] == "get_started_step" and shown_privacy:
             dispatcher.utter_message(template=f"utter_{intent}")
@@ -738,13 +738,13 @@ class ActionForumSearch(Action):
         return []
 
 
-class ActionMovieName(Action):
-    def name(self):
-        return "action_not_get_movie"
+class ActionUserResponse(Action):
+    """Stores the problem description in a slot."""
+
+    def name(self) -> Text:
+        return "action_user_response"
 
     def run(self, dispatcher, tracker, domain) -> List[EventType]:
-        requested_slot = tracker.get_slot("movie_name")
-        if requested_slot is None:
-            return [SlotSet("movie_name", "that movie")]
-        else:
-            return []
+        problem = tracker.latest_message.get("text")
+
+        return [SlotSet("user_response", problem)]

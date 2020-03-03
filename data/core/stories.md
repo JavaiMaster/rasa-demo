@@ -407,17 +407,21 @@
 > check_movie_response
 * movie_name_action
     - utter_movie_continue
-* next_step
+* out_of_scope OR movies OR ask_howold OR deny OR affirm OR react_negative OR react_positive
+    - action_user_response
     - utter_movie_about
-* next_step
+* out_of_scope OR movies OR ask_howold OR deny OR affirm OR react_negative OR react_positive
     - utter_movie_follow_up
-* next_step
+* out_of_scope OR movies OR ask_howold OR deny OR affirm OR react_negative OR react_positive
     - utter_movie_end
-* affirm
+* out_of_scope OR movies OR ask_howold OR deny OR affirm OR react_negative OR react_positive
+    - utter_thank_suggestion
     - utter_bye
     
 ## movie flow 2
 > check_movie_response
 * movies
- - utter_bye
+    - utter_too_bad
+* affirm
+    - utter_bye
 

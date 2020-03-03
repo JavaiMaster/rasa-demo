@@ -63,7 +63,6 @@ intents:
   - nlu_generation_tool_recommendation
   - nlu_info
   - out_of_scope:
-      triggers: respond_out_of_scope
       use_entities: []
   - pipeline_recommendation
   - react_negative
@@ -91,6 +90,7 @@ entities:
   - product
   - user_type
   - movie_name
+  - user_response
 slots:
   budget:
     type: unfeaturized
@@ -161,6 +161,8 @@ slots:
   movie_name:
     type: unfeaturized
     initial_value: "that movie"
+  user_response:
+    type: unfeaturized
 templates:
   utter_already_subscribed:
     - text: Looks like {email} is already subscribed - good choice! If you haven't received
@@ -369,9 +371,9 @@ templates:
     - text: Bye, was nice talking to you!
     - text: Bye bye!
   utter_too_bad:
-    - That's too bad! Would you like to talk about something else
-    - Aw shucks! Should we maybe change the topic?
-    - Okay then. Let's chat about something else.
+    - text: That's too bad! Would you like to talk about something else
+    - text: Aw shucks! Should we maybe change the topic?
+    - text: Okay then. Let's chat about something else.
   utter_can_do:
     - text: Sure thing!
     - text: Can do!
@@ -918,8 +920,8 @@ actions:
   - utter_movie_about
   - utter_movie_follow_up
   - utter_movie_end
-  - movie_action_name
   - action_not_get_movie
+  - action_user_response
 forms:
   - sales_form
   - subscribe_newsletter_form
