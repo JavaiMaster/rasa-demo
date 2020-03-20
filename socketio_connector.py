@@ -143,6 +143,7 @@ class SocketIOInput(InputChannel):
         async def connect(sid, environ):
             logger.debug("User {} connected to socketIO endpoint.".format(sid))
             print('Connected!')
+            print(environ)
 
         @sio.on('disconnect', namespace=self.namespace)
         async def disconnect(sid):
