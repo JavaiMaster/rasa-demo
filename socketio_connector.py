@@ -76,13 +76,11 @@ class SocketIOOutput(OutputChannel):
         ts = time.time()
 
         OUT_FILE = str(ts) + '.wav'
-        link = "http://localhost:8888/" + OUT_FILE
+        link = "https://localhost:8888/" + OUT_FILE
 
         language = 'en'
         voice = gTTS(text=response['text'], lang=language, slow=False)
         voice.save(OUT_FILE)
-
-        # wav_norm = self.tts_predict(MODEL_PATH, response['text'], CONFIG, use_cuda, OUT_FILE)
 
         await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link}, room=socket_id,
                             namespace=self.namespace)
