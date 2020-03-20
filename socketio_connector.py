@@ -12,12 +12,14 @@ import os
 import time
 import urllib
 import speech_recognition as sr
-#from liwc import Liwc
+# from liwc import Liwc
 from transformers import pipeline
 
 logger = logging.getLogger(__name__)
 nlp = pipeline('sentiment-analysis')
-#liwc = Liwc("LIWC2007_English080730.dic")
+
+
+# liwc = Liwc("LIWC2007_English080730.dic")
 
 
 def google_asr(audio_file):
@@ -35,7 +37,7 @@ def google_asr(audio_file):
         # instead of `r.recognize_google(audio)`
         text = r.recognize_google(audio)
         print("You said: " + text)
-        #print(liwc.parse(text.split(' ')))
+        # print(liwc.parse(text.split(' ')))
         print(nlp(text))
         return text
     except sr.UnknownValueError:
@@ -64,17 +66,19 @@ class SocketIOOutput(OutputChannel):
     def name(cls):
         return "socketio"
 
-    def __init__(self, sio, sid, bot_message_evt, message):
+    def __init__(self, sio, sid, bot_message_evt, message, namespace):
         self.sio = sio
         self.sid = sid
         self.bot_message_evt = bot_message_evt
         self.message = message
+        self.namespace = namespace
 
     async def _send_audio_message(self, socket_id, response, **kwargs: Any):
         # type: (Text, Any) -> None
         """Sends a message to the recipient using the bot event."""
 
         ts = time.time()
+
         OUT_FILE = str(ts) + '.wav'
         link = "http://localhost:8888/" + OUT_FILE
 
@@ -84,11 +88,14 @@ class SocketIOOutput(OutputChannel):
 
         # wav_norm = self.tts_predict(MODEL_PATH, response['text'], CONFIG, use_cuda, OUT_FILE)
 
-        await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link}, room=socket_id)
+        await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link}, room=socket_id,
+                            namespace=self.namespace)
 
     async def send_text_message(self, recipient_id: Text, message: Text, **kwargs: Any) -> None:
         """Send a message through this channel."""
-
+        print("********************")
+        print("message is ", message)
+        print("ID is ", recipient_id)
         await self._send_audio_message(self.sid, {"text": message})
 
 
@@ -104,7 +111,7 @@ class SocketIOInput(InputChannel):
         credentials = credentials or {}
         return cls(credentials.get("user_message_evt", "user_uttered"),
                    credentials.get("bot_message_evt", "bot_uttered"),
-                   credentials.get("namespace"),
+                   credentials.get("namespace", "namespace"),
                    credentials.get("session_persistence", False),
                    credentials.get("socketio_path", "/socket.io"),
                    )
@@ -150,14 +157,14 @@ class SocketIOInput(InputChannel):
                 data = {}
             if 'session_id' not in data or data['session_id'] is None:
                 data['session_id'] = uuid.uuid4().hex
-            await sio.emit("session_confirm", data['session_id'], room=sid)
+            await sio.emit("session_confirm", data['session_id'], room=sid, namespace=self.namespace)
             logger.debug("User {} connected to socketIO endpoint."
                          "".format(sid))
 
         @sio.on('user_uttered', namespace=self.namespace)
         async def handle_message(sid, data):
 
-            output_channel = SocketIOOutput(sio, sid, self.bot_message_evt, data['message'])
+            output_channel = SocketIOOutput(sio, sid, self.bot_message_evt, data['message'], self.namespace)
             if data['message'] == "/get_started":
                 message = data['message']
             else:
@@ -169,7 +176,7 @@ class SocketIOInput(InputChannel):
 
                 message = google_asr(received_file)
 
-                await sio.emit(self.user_message_evt, {"text": message}, room=sid)
+                await sio.emit(self.user_message_evt, {"text": message}, room=sid, namespace=self.namespace)
 
             message_rasa = UserMessage(message, output_channel, sid,
                                        input_channel=self.name())
