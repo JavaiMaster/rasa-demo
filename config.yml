@@ -22,7 +22,7 @@ pipeline:
 - name: ResponseSelector
   retrieval_intent: out_of_scope
 policies:
-- name: TEDPolicy
+- name: KerasPolicy
   max_history: 10
   epochs: 20
   batch_size:

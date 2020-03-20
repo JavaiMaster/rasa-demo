@@ -12,14 +12,10 @@ import os
 import time
 import urllib
 import speech_recognition as sr
-# from liwc import Liwc
 from transformers import pipeline
 
 logger = logging.getLogger(__name__)
 nlp = pipeline('sentiment-analysis')
-
-
-# liwc = Liwc("LIWC2007_English080730.dic")
 
 
 def google_asr(audio_file):
@@ -128,6 +124,7 @@ class SocketIOInput(InputChannel):
         self.user_message_evt = user_message_evt
         self.namespace = namespace
         self.socketio_path = socketio_path
+        self.interaction = 0
 
     def blueprint(self, on_new_message):
         sio = AsyncServer(async_mode="sanic", cors_allowed_origins="*")
@@ -143,12 +140,14 @@ class SocketIOInput(InputChannel):
         async def connect(sid, environ):
             logger.debug("User {} connected to socketIO endpoint.".format(sid))
             print('Connected!')
+
             print(environ)
 
         @sio.on('disconnect', namespace=self.namespace)
         async def disconnect(sid):
             logger.debug("User {} disconnected from socketIO endpoint."
                          "".format(sid))
+            self.interaction = 0
 
         @sio.on('session_request', namespace=self.namespace)
         async def session_request(sid, data):
@@ -170,7 +169,8 @@ class SocketIOInput(InputChannel):
                 message = data['message']
             else:
                 ##receive audio
-                received_file = 'output_' + sid + '.wav'
+                received_file = 'output_' + sid + "****" + str(self.interaction) + '.wav'
+                self.interaction += 1
 
                 urllib.request.urlretrieve(data['message'], received_file)
                 path = os.path.dirname(__file__)
