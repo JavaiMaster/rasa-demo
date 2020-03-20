@@ -9,7 +9,7 @@ pipeline:
   analyzer: char_wb
   min_ngram: 1
   max_ngram: 4
-- name: DIETClassifier
+- name: EmbeddingIntentClassifier
   epochs: 50
   loss_type: margin
 - name: DucklingHTTPExtractor
@@ -22,7 +22,7 @@ pipeline:
 - name: ResponseSelector
   retrieval_intent: out_of_scope
 policies:
-- name: KerasPolicy
+- name: EmbeddingPolicy
   max_history: 10
   epochs: 20
   batch_size:
