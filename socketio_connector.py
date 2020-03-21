@@ -76,7 +76,7 @@ class SocketIOOutput(OutputChannel):
         ts = time.time()
 
         OUT_FILE = str(ts) + '.wav'
-        link = "https://localhost:8888/" + OUT_FILE
+        link = "https://35.232.228.158:8888/" + OUT_FILE
 
         language = 'en'
         voice = gTTS(text=response['text'], lang=language, slow=False)
