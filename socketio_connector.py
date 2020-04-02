@@ -76,11 +76,10 @@ class SocketIOOutput(OutputChannel):
         ts = time.time()
 
         OUT_FILE = str(ts) + '.wav'
-        link = "https://35.232.228.158:8888/" + OUT_FILE
-
+        link = "https://wav.chattybot.us/" + OUT_FILE
         language = 'en'
         voice = gTTS(text=response['text'], lang=language, slow=False)
-        voice.save(OUT_FILE)
+        voice.save("../rasa_data/"+OUT_FILE)
 
         await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link}, room=socket_id,
                             namespace=self.namespace)
@@ -167,7 +166,7 @@ class SocketIOInput(InputChannel):
                 message = data['message']
             else:
                 ##receive audio
-                received_file = 'output_' + sid + "****" + str(self.interaction) + '.wav'
+                received_file = '../wav_data/output_' + sid + "****" + str(self.interaction) + '.wav'
                 self.interaction += 1
 
                 urllib.request.urlretrieve(data['message'], received_file)
