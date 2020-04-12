@@ -76,10 +76,10 @@ class SocketIOOutput(OutputChannel):
         ts = time.time()
 
         OUT_FILE = str(ts) + '.wav'
-        link = "https://wav.chattybot.us/" + OUT_FILE
+        link = "https://app.chattybot.us/bingo/" + OUT_FILE
         language = 'en'
         voice = gTTS(text=response['text'], lang=language, slow=False)
-        voice.save("../rasa_data/"+OUT_FILE)
+        voice.save("../rasa_data/bingo/"+OUT_FILE)
 
         await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link}, room=socket_id,
                             namespace=self.namespace)
