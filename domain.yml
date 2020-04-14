@@ -163,7 +163,7 @@ slots:
     initial_value: "that movie"
   user_response:
     type: unfeaturized
-templates:
+responses:
   utter_already_subscribed:
     - text: Looks like {email} is already subscribed - good choice! If you haven't received
         a newsletter in a while, maybe check your spam folder 🗑

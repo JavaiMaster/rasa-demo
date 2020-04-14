@@ -407,8 +407,7 @@
 > check_movie_response
 * movie_name_action
     - utter_movie_continue
-* out_of_scope OR movies OR ask_howold OR deny OR affirm OR react_negative OR react_positive
-    - action_user_response
+* out_of_scope OR movies
     - utter_movie_about
 * out_of_scope OR movies OR ask_howold OR deny OR affirm OR react_negative OR react_positive
     - utter_movie_follow_up
