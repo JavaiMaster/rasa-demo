@@ -317,61 +317,6 @@
 - whatsapp
 - yow are you
 
-## intent:ask_howold
-- Do you have friends the same age as you, if so, how old are they?
-- How long have you been alive?
-- How long have you been around?
-- How long have you occupied the earth?
-- How many candles were on your last birthday cake?
-- How many years have you been alive?
-- How many years have you lived?
-- How old are you?
-- How old were you on your last birthday?
-- How old will you be on your next birthday?
-- Tell me your day, month and year of birth.
-- What is your age?
-- What is your birthdate?
-- What is your count of years being alive so far?
-- What was your age on your last birthday?
-- What will be your age on your next birthday?
-- What year were you born?
-- Whats your age?
-- When do you celebrate your day of birth?
-- and you are how many years old?
-- can you tell me exactly how old you are?
-- can you tell me what number represents your age?
-- can you tell me your age?
-- do you know how old you are?
-- give me your age?
-- how about your age
-- how aold are you
-- how many ages?
-- how many years old are you?
-- how old are u
-- how old are you
-- how old are you?
-- how old were you on your last birthday?
-- how old were you when you celebrated your last birthday?
-- how old will you be this year?
-- how old?
-- in what year were you born?
-- tell me how old you are?
-- tell me your age number?
-- tell me your age?
-- what age are you
-- what age were you when you celebrated your last birthday?
-- what is your age?
-- what is your birthday?
-- what is your exact age?
-- what number represents your age?
-- what year were you born?
-- what's your age?
-- whats your age?
-- whats your birth year?
-- when is your birthday?
-- when were you born?
-- when you were bon
-
 ## intent:ask_isbot
 - Ar you a bot ?
 - Are you a bot
@@ -410,59 +355,6 @@
 - you are ai
 - you are chatbot
 - you're a bot
-
-## intent:ask_time
-- Can you give me the time?
-- Can you tell me the time?
-- Can you tell me what time it is?
-- Can you tell the time?
-- Could you tell me the time, please?
-- Could you tell me the time?
-- Could you tell me what time is it?
-- Do you have the time?
-- Do you know the time?
-- Do you know what time it is?
-- Excuse me, what time is it?
-- Give me the time.
-- Hi, I need the time.
-- I need to know what time it is.
-- Pardon me, but do you know the time?
-- Tell me the time.
-- Time, please!
-- Time?
-- What is the current time?
-- What is the exact time?
-- What is the hour and minute right now?
-- What is the time?
-- What might the time be?
-- What time do we have?
-- What time have we got?
-- What time is it in [Berlin](location)?
-- What time is it right now?
-- What's the current time?
-- What's the time right now?
-- What's the time?
-- Would you tell me what time it is?
-- do you have the time?
-- do you know the current time?
-- tell me the current time.
-- tell me the time it is.
-- tell me the time.
-- tell me what time you have.
-- that's true. do you know what time it is?
-- what is the current time?
-- what is the time ?
-- what is the time in [Sydney](location)?
-- what is the time?
-- what is time in US ?
-- what is time is US ?
-- what is time is USA ?
-- what time do you have?
-- what time is it
-- what time is it?
-- what time it is
-- what's the time
-- whats the time now
 
 ## intent:ask_whatismyname
 - Can you tell me my name?
@@ -1424,7 +1316,7 @@
 - thx
 - yes thanks
 
-## intent:movies
+## intent: dont_like_movies
 - I don't watch movies
 - I don't like movies
 - Movies are boring
@@ -1442,6 +1334,21 @@
 - Can we talk about something else
 - I don't find movies interesting
 
+##intent: sports
+- Of course I watch sports! Who doesn't!?
+- I watch it everyday
+- I love football
+- I cannot imagine a life without basketball
+- I catch the news about tennis regularly
+- I'm a huge fan of cricket
+- I can watch football all day long
+- I love watching sports
+- Sports is my life
+- sports is a huge part of my life
+- I love Lebron James
+- Sports is what I live for!
+- I watch sports everyday every night
+- I love the skill required in sports
 
 ## lookup: location
 data/nlu/lookups/location.txt
@@ -1481,7 +1388,50 @@ data/nlu/lookups/products.txt
 ## regex:zipcode
 - [0-9]{5}
 
-## intent:movie_name_action
+
+## intent: decide_topic
+- Great! Let's talk about [sports](topics)
+- I would like to choose [politics](topics)
+- I choose [movies](topics)
+- Let's do [movies](topics)
+- I want to talk about [sports](topics)
+- I want to discuss [movies](topics)
+- I like talking about [sports](topics)
+- I just love [movies](topics)
+- I enjoy [sports](topics) a lot
+- I find [politics](topics) to be very interesting
+- I would enjoy a good talk about [sports](topics)
+- [movies](topics)
+- [sports](topics)
+- [politics](topics)
+
+## intent: my_name_is
+- My name is [Mark](name)
+- My name is [Jim](name)
+- My name is [Vinay](name)
+- My name is [Martin](name)
+- People call me [David](name)
+- People address me as [Alan](name)
+- I like to call myself [Bill](name)
+- It's [Paul](name)
+- It's [Alan](name)
+- It's [Alex](name)
+- People call me [Tushar](name)
+- People address me as [Karthik](name)
+- I like to call myself [Tom](name)
+- People call me [Morgan](name)
+- People address me as [Leo](name)
+- I like to call myself [Cyrus](name)
+- I'm [Jill](name)
+- I'm [Courtney](name)
+- I am [Jennifer](name)
+- I am [Brittney](name)
+- Sure. You can call me [Corrina](name)
+- You can call me [Natalie](name)
+- People like to call me [Britta](name)
+- I address myslef as [Shirley](name)
+
+## intent: movie_name_action
 - My favourite movie is [Star Wars](movie_name)
 - My favourite movie is [Back to the Future](movie_name)
 - My favourite movie is [The Terminator](movie_name)
