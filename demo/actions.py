@@ -53,10 +53,10 @@ class SubscribeNewsletterForm(FormAction):
             return {"email": None}
 
     def submit(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
     ) -> List[EventType]:
         """Once we have an email, attempt to add it to the database"""
 
@@ -126,7 +126,7 @@ class SalesForm(FormAction):
         }
 
     def validate_business_email(
-        self, value, dispatcher, tracker, domain
+            self, value, dispatcher, tracker, domain
     ) -> Dict[Text, Any]:
         """Check to see if an email entity was actually picked up by duckling."""
 
@@ -139,10 +139,10 @@ class SalesForm(FormAction):
             return {"business_email": None}
 
     def submit(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
     ) -> List[EventType]:
         """Once we have all the information, attempt to add it to the
         Google Drive database"""
@@ -185,7 +185,7 @@ class ActionExplainSalesForm(Action):
         if requested_slot not in SalesForm.required_slots(tracker):
             dispatcher.utter_message(
                 template="Sorry, I didn't get that. Please rephrase or answer the question "
-                "above."
+                         "above."
             )
             return []
 
@@ -426,13 +426,13 @@ class ActionGreetUser(Action):
                 return []
             else:
                 dispatcher.utter_message(template="utter_greet")
-                dispatcher.utter_message(template="utter_inform_privacypolicy")
-                dispatcher.utter_message(template="utter_ask_goal")
+                # dispatcher.utter_message(template="utter_inform_privacypolicy")
+                # dispatcher.utter_message(template="utter_ask_goal")
                 return [SlotSet("shown_privacy", True)]
         elif intent[:-1] == "get_started_step" and not shown_privacy:
             dispatcher.utter_message(template="utter_greet")
-            dispatcher.utter_message(template="utter_inform_privacypolicy")
-            dispatcher.utter_message(template=f"utter_{intent}")
+            # dispatcher.utter_message(template="utter_inform_privacypolicy")
+            # dispatcher.utter_message(template=f"utter_{intent}")
             return [SlotSet("shown_privacy", True), SlotSet("step", intent[-1])]
         elif intent[:-1] == "get_started_step" and shown_privacy:
             dispatcher.utter_message(template=f"utter_{intent}")
@@ -456,10 +456,10 @@ class ActionDefaultAskAffirmation(Action):
         )
 
     def run(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
     ) -> List[EventType]:
 
         intent_ranking = tracker.latest_message.get("intent_ranking", [])
@@ -533,16 +533,16 @@ class ActionDefaultFallback(Action):
         return "action_default_fallback"
 
     def run(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
     ) -> List[EventType]:
 
         # Fallback caused by TwoStageFallbackPolicy
         if (
-            len(tracker.events) >= 4
-            and tracker.events[-4].get("name") == "action_default_ask_affirmation"
+                len(tracker.events) >= 4
+                and tracker.events[-4].get("name") == "action_default_ask_affirmation"
         ):
 
             dispatcher.utter_message(template="utter_restart_with_button")
@@ -579,15 +579,15 @@ class CommunityEventAction(Action):
     def _are_events_expired(self) -> bool:
         # events are expired after 1 hour
         return (
-            self.last_event_update is None
-            or (datetime.now() - self.last_event_update).total_seconds() > 3600
+                self.last_event_update is None
+                or (datetime.now() - self.last_event_update).total_seconds() > 3600
         )
 
     def run(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
     ) -> List[EventType]:
 
         events = self._get_events()
@@ -599,7 +599,7 @@ class CommunityEventAction(Action):
                 e
                 for e in events
                 if e.city.lower() == location.lower()
-                or e.country.lower() == location.lower()
+                   or e.country.lower() == location.lower()
             ]
 
         if not events:
@@ -615,11 +615,11 @@ class CommunityEventAction(Action):
 
     @staticmethod
     def _utter_events(
-        tracker: Tracker,
-        dispatcher: CollectingDispatcher,
-        events: List,
-        events_for_location: List,
-        location: Text,
+            tracker: Tracker,
+            dispatcher: CollectingDispatcher,
+            events: List,
+            events_for_location: List,
+            location: Text,
     ) -> None:
 
         only_next = True if "next" in tracker.latest_message.get("text") else False
@@ -709,7 +709,7 @@ class ActionDocsSearch(Action):
 
         dispatcher.utter_message(
             text="I can't answer your question directly, but I found the following from the docs:\n"
-            + doc_list
+                 + doc_list
         )
 
         return []
@@ -736,3 +736,15 @@ class ActionForumSearch(Action):
 
         dispatcher.utter_message(text=f"I found the following from our forum:\n{forum}")
         return []
+
+
+class ActionUserResponse(Action):
+    """Stores the problem description in a slot."""
+
+    def name(self) -> Text:
+        return "action_user_response"
+
+    def run(self, dispatcher, tracker, domain) -> List[EventType]:
+        problem = tracker.latest_message.get("text")
+
+        return [SlotSet("user_response", problem)]
