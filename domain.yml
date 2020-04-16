@@ -1,30 +1,56 @@
-session_config:
-  session_expiration_time: 480  # value in minutes, 0 means infinitely long
-  carry_over_slots_to_new_session: true  # set to false to forget slots between sessions
+actions:
+  - action_chitchat
+  - action_decide_topic
+  - action_greet_user
+  - action_next_step
+  - respond_out_of_scope
+  - utter_are_you_ready_to_start
+  - utter_ask_whatismyname
+  - utter_ask_whoami
+  - utter_ask_whoisit
+  - utter_bye
+  - utter_can_do
+  - utter_default
+  - utter_greet
+  - utter_greet_name
+  - utter_greet_noname
+  - utter_movie_about
+  - utter_movie_continue
+  - utter_movie_end
+  - utter_movie_follow_up
+  - utter_movie_start
+  - utter_nicetomeeyou
+  - utter_not_sure
+  - utter_noworries
+  - utter_sport_continue
+  - utter_sport_start
+  - utter_talk_movies
+  - utter_talk_sports
+  - utter_too_bad
+  - utter_we_can_talk_about_topics
+  - utter_what_is_name
+entities:
+  - movie_name
+  - name
+  - topics
 intents:
+  - my_name_is
+  - sports
   - affirm
+  - greet
+  - decide_topic
   - bye
   - deny
-  - movies
+  - dont_like_movies
   - movie_name_action
-  - greet
   - next_step
   - nicetomeeyou
   - out_of_scope:
       use_entities: []
   - thank
-entities:
-  - name
-  - movie_name
-slots:
-  name:
-    type: text
-  movie_name:
-    type: unfeaturized
-    initial_value: "that movie"
 responses:
   utter_are_you_ready_to_start:
-    - text: Are you ready to start the survey?
+    - text: Are you ready to start talking to me?
   utter_ask_whatismyname:
     - text: It's probably the one that your parents chose for you.
     - text: I'd tell you, but there's restricted access to that chunk of memory.
@@ -43,10 +69,6 @@ responses:
     - text: Ciao!
     - text: Bye, was nice talking to you!
     - text: Bye bye!
-  utter_too_bad:
-    - text: That's too bad! Would you like to talk about something else
-    - text: Aw shucks! Should we maybe change the topic?
-    - text: Okay then. Let's chat about something else.
   utter_can_do:
     - text: Sure thing!
     - text: Can do!
@@ -71,46 +93,57 @@ responses:
     - text: Hey!
     - text: Hi!
     - text: Hey there!
+  utter_movie_about:
+    - text: Can you tell me what it is about?
+  utter_movie_continue:
+    - text: I haven't seen {movie_name}. Is it an old movie?
+  utter_movie_end:
+    - text: I am probably gonna watch it then. Anything else I should know?
+  utter_movie_follow_up:
+    - text: So it is, kinda philosophical, right?
+  utter_movie_start:
+    - text: What is your favorite movie of all time?
   utter_nicetomeeyou:
-    - text: Likewise!
-    - text: Thank you. It is a pleasure to meet you as well!
-    - text: It is nice to meet you too!
-    - text: Pleased to meet you too!
+    - text: It is a pleasure to meet you!
+    - text: It is nice to meet you!
+    - text: Pleased to meet you!
     - text: It's always a pleasure to meet new people!
-    - text: Nice to meet you too! Happy to be of help.
+    - text: Nice to meet you!
   utter_not_sure:
     - text: Hmm, not sure what you mean...
   utter_noworries:
     - text: No worries!
     - text: You're welcome!
     - text: I'm happy to help.
-  utter_movie_start:
-    - text: What is your favorite movie of all time?
-  utter_movie_continue:
-    - text: I haven't seen {movie_name}. Is it an old movie?
-  utter_movie_about:
-    - text: Can you tell me what it is about?
-  utter_movie_follow_up:
-    - text: So it is, kinda philosophical, right?
-  utter_movie_end:
-    - text: I am probably gonna watch it then. Anything else I should know?
-actions:
-  - action_chitchat
-  - action_greet_user
-  - action_next_step
-  - utter_are_you_ready_to_start
-  - utter_ask_whoami
-  - utter_ask_whoisit
-  - utter_bye
-  - utter_greet
-  - utter_greet_name
-  - utter_greet_noname
-  - utter_nicetomeeyou
-  - utter_noworries
-  - respond_out_of_scope
-  - utter_movie_start
-  - utter_movie_continue
-  - utter_movie_about
-  - utter_movie_follow_up
-  - utter_movie_end
-  - utter_too_bad
+  utter_sport_continue:
+    - text: You chose sports! How sad for you!
+  utter_sport_start:
+    - text: Do you watch any sport on TV?
+  utter_talk_movies:
+    - text: Fantastic! Let's talk about movies!
+  utter_talk_sports:
+    - text: Awesome! Let's talk about sports!
+  utter_too_bad:
+    - text: That's too bad! Would you like to talk about something else
+    - text: Aw shucks! Should we maybe change the topic?
+    - text: Okay then. Let's chat about something else.
+  utter_we_can_talk_about_topics:
+    - text: Great! Would you like to talk about movies or sports?
+  utter_what_is_name:
+    - text: Hey there! Before we begin can you tell me your name?
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 480
+slots:
+  movie_name:
+    initial_value: that movie
+    type: unfeaturized
+  name:
+    type: text
+  topics:
+    type: categorical
+    values:
+      - sports
+      - politics
+      - movies
+      - __other__

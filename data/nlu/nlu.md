@@ -1316,7 +1316,7 @@
 - thx
 - yes thanks
 
-## intent:movies
+## intent: dont_like_movies
 - I don't watch movies
 - I don't like movies
 - Movies are boring
@@ -1334,6 +1334,21 @@
 - Can we talk about something else
 - I don't find movies interesting
 
+##intent: sports
+- Of course I watch sports! Who doesn't!?
+- I watch it everyday
+- I love football
+- I cannot imagine a life without basketball
+- I catch the news about tennis regularly
+- I'm a huge fan of cricket
+- I can watch football all day long
+- I love watching sports
+- Sports is my life
+- sports is a huge part of my life
+- I love Lebron James
+- Sports is what I live for!
+- I watch sports everyday every night
+- I love the skill required in sports
 
 ## lookup: location
 data/nlu/lookups/location.txt
@@ -1373,7 +1388,50 @@ data/nlu/lookups/products.txt
 ## regex:zipcode
 - [0-9]{5}
 
-## intent:movie_name_action
+
+## intent: decide_topic
+- Great! Let's talk about [sports](topics)
+- I would like to choose [politics](topics)
+- I choose [movies](topics)
+- Let's do [movies](topics)
+- I want to talk about [sports](topics)
+- I want to discuss [movies](topics)
+- I like talking about [sports](topics)
+- I just love [movies](topics)
+- I enjoy [sports](topics) a lot
+- I find [politics](topics) to be very interesting
+- I would enjoy a good talk about [sports](topics)
+- [movies](topics)
+- [sports](topics)
+- [politics](topics)
+
+## intent: my_name_is
+- My name is [Mark](name)
+- My name is [Jim](name)
+- My name is [Vinay](name)
+- My name is [Martin](name)
+- People call me [David](name)
+- People address me as [Alan](name)
+- I like to call myself [Bill](name)
+- It's [Paul](name)
+- It's [Alan](name)
+- It's [Alex](name)
+- People call me [Tushar](name)
+- People address me as [Karthik](name)
+- I like to call myself [Tom](name)
+- People call me [Morgan](name)
+- People address me as [Leo](name)
+- I like to call myself [Cyrus](name)
+- I'm [Jill](name)
+- I'm [Courtney](name)
+- I am [Jennifer](name)
+- I am [Brittney](name)
+- Sure. You can call me [Corrina](name)
+- You can call me [Natalie](name)
+- People like to call me [Britta](name)
+- I address myslef as [Shirley](name)
+
+## intent: movie_name_action
 - My favourite movie is [Star Wars](movie_name)
 - My favourite movie is [Back to the Future](movie_name)
 - My favourite movie is [The Terminator](movie_name)

@@ -415,28 +415,36 @@ class ActionGreetUser(Action):
 
     def run(self, dispatcher, tracker, domain) -> List[EventType]:
         intent = tracker.latest_message["intent"].get("name")
-        shown_privacy = tracker.get_slot("shown_privacy")
         name_entity = next(tracker.get_latest_entity_values("name"), None)
-        if intent == "greet" or (intent == "enter_data" and name_entity):
-            if shown_privacy and name_entity and name_entity.lower() != "sara":
+        if intent == "greet":  # or (intent == "enter_data" and name_entity):
+            if name_entity and name_entity.lower() not in ["sara", "sarah"]:
                 dispatcher.utter_message(template="utter_greet_name", name=name_entity)
                 return []
-            elif shown_privacy:
+            else:
                 dispatcher.utter_message(template="utter_greet_noname")
                 return []
-            else:
-                dispatcher.utter_message(template="utter_greet")
-                # dispatcher.utter_message(template="utter_inform_privacypolicy")
-                # dispatcher.utter_message(template="utter_ask_goal")
-                return [SlotSet("shown_privacy", True)]
-        elif intent[:-1] == "get_started_step" and not shown_privacy:
-            dispatcher.utter_message(template="utter_greet")
-            # dispatcher.utter_message(template="utter_inform_privacypolicy")
-            # dispatcher.utter_message(template=f"utter_{intent}")
-            return [SlotSet("shown_privacy", True), SlotSet("step", intent[-1])]
-        elif intent[:-1] == "get_started_step" and shown_privacy:
-            dispatcher.utter_message(template=f"utter_{intent}")
-            return [SlotSet("step", intent[-1])]
+        return []
+
+
+class ActionDecideTopic(Action):
+    """Greets the user with/without privacy policy"""
+
+    def name(self) -> Text:
+        return "action_decide_topic"
+
+    def run(self, dispatcher, tracker, domain) -> List[EventType]:
+        intent = tracker.latest_message["intent"].get("name")
+        topic_name = next(tracker.get_latest_entity_values("topics"), None)
+        if intent == "decide_topic":
+            print("topic is ", topic_name)
+            if topic_name == "movies":
+                dispatcher.utter_message(template="utter_talk_movies")
+                dispatcher.utter_message(template="utter_movie_start")
+                return []
+            elif topic_name == "sports":
+                dispatcher.utter_message(template="utter_talk_sports")
+                dispatcher.utter_message(template="utter_sport_start")
+                return []
         return []
 
 
