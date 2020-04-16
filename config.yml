@@ -1,37 +1,25 @@
-language: en
+language: "en"
+
 pipeline:
-- name: WhitespaceTokenizer
-- name: CRFEntityExtractor
-- name: CountVectorsFeaturizer
-  OOV_token: oov
-  token_pattern: (?u)\b\w+\b
-- name: CountVectorsFeaturizer
-  analyzer: char_wb
-  min_ngram: 1
-  max_ngram: 4
-- name: EmbeddingIntentClassifier
-  epochs: 50
-  loss_type: margin
-- name: DucklingHTTPExtractor
-  url: http://localhost:8000
-  dimensions:
-  - email
-  - number
-  - amount-of-money
-- name: EntitySynonymMapper
-- name: ResponseSelector
-  retrieval_intent: out_of_scope
+  - name: ConveRTTokenizer
+  - name: ConveRTFeaturizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier
+    epochs: 80
+  - name: EntitySynonymMapper
+  - name: ResponseSelector
+    epochs: 100
 policies:
-- name: EmbeddingPolicy
-  max_history: 10
-  epochs: 20
-  batch_size:
-  - 32
-  - 64
-- max_history: 6
-  name: AugmentedMemoizationPolicy
-- core_threshold: 0.3
-  name: TwoStageFallbackPolicy
-  nlu_threshold: 0.8
-- name: FormPolicy
-- name: MappingPolicy
+  - name: TEDPolicy
+    epochs: 10
+    hidden_layers_sizes:
+      dialogue: [512, 1024, 512]
+      label: [512, 1024, 512]
+    number_of_transformer_layers: 4
+  - name: FormPolicy
