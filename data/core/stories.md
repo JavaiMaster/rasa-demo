@@ -11,12 +11,11 @@
     - utter_movie_continue
 * out_of_scope OR movies
     - utter_movie_about
-* out_of_scope OR movies OR ask_howold OR deny OR affirm OR react_negative OR react_positive
+* out_of_scope OR movies OR deny OR affirm
     - utter_movie_follow_up
-* out_of_scope OR movies OR ask_howold OR deny OR affirm OR react_negative OR react_positive
+* out_of_scope OR movies OR deny OR affirm
     - utter_movie_end
-* out_of_scope OR movies OR ask_howold OR deny OR affirm OR react_negative OR react_positive
-    - utter_thank_suggestion
+* out_of_scope OR movies OR deny OR affirm
     - utter_bye
     
 ## movie flow 2
