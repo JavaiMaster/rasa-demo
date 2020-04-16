@@ -1538,3 +1538,9 @@ data/nlu/lookups/products.txt
 - I really liked [Power Rangers](movie_name)
 - I really enjoyed [Yellow Submarine](movie_name)
 - I really loved [A Hard day's night](movie_name)
+- My favourite movie of all time is [21 Jump Street](movie_name)
+- My favourite movie of all time is [Game of Thrones](movie_name)
+- My favourite movie of all time is [Gladiator](movie_name)
+- My favourite movie of all time is [Slumdog Millionaire](movie_name)
+
+
