@@ -1,10 +1,6 @@
 ## conversation begin
 * greet
     - utter_what_is_name
-* my_name_is
-    - action_greet_user
-    - utter_nicetomeeyou
-    - utter_are_you_ready_to_start
 > check_ready_to_begin
 
 ## check_ready_to_begin -> no

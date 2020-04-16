@@ -33,12 +33,15 @@ entities:
   - movie_name
   - name
   - topics
+  - user_response
 intents:
-  - my_name_is
+  - my_name_is:
+      triggers: action_greet_user
   - sports
   - affirm
   - greet
-  - decide_topic
+  - decide_topic:
+      triggers: action_decide_topic
   - bye
   - deny
   - dont_like_movies
@@ -137,7 +140,7 @@ session_config:
 slots:
   movie_name:
     initial_value: that movie
-    type: unfeaturized
+    type: text
   name:
     type: text
   topics:
@@ -147,3 +150,5 @@ slots:
       - politics
       - movies
       - __other__
+  user_response:
+    type: text
