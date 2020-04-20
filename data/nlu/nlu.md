@@ -1316,24 +1316,6 @@
 - thx
 - yes thanks
 
-## intent: dont_like_movies
-- I don't watch movies
-- I don't like movies
-- Movies are boring
-- I don't know
-- I've never seen a movie before
-- I've never watched movies
-- I don't know what a movie is
-- What is a movie
-- I don't have a favorite movie
-- I hate movies
-- I don't enjoy movies
-- I don't want to talk about movies
-- Let's talk about something else
-- Can we not talk about movies
-- Can we talk about something else
-- I don't find movies interesting
-
 ##intent: sports
 - Of course I watch sports! Who doesn't!?
 - I watch it everyday
@@ -1430,6 +1412,12 @@ data/nlu/lookups/products.txt
 - You can call me [Natalie](name)
 - People like to call me [Britta](name)
 - I address myslef as [Shirley](name)
+- [John](name)
+- [Christopher](name)
+- [Julie](name)
+- [Daniel](name)
+- [Donald Trump](name)
+- [Barack Obama](name)
 
 ## intent: movie_name_action
 - My favourite movie is [Star Wars](movie_name)

@@ -47,7 +47,7 @@ class ActionGreetUser(Action):
         name_entity = next(tracker.get_latest_entity_values("name"), None)
         print("intent is ", intent)
         if intent == "my_name_is":  # or (intent == "enter_data" and name_entity):
-            if name_entity and name_entity.lower() not in ["sara", "sarah"]:
+            if name_entity and name_entity.lower() not in ["sara", "sarah", "desire"]:
                 dispatcher.utter_message(template="utter_greet_name", name=name_entity)
             else:
                 dispatcher.utter_message(template="utter_greet_noname")

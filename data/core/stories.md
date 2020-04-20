@@ -20,7 +20,7 @@
 ## topic_check -> movies
 > check_which_topic
 * movie_name_action
-    - utter_movie_continue
+    - utter_movie_old
 * out_of_scope
     - utter_movie_about
 * out_of_scope OR deny OR affirm
@@ -32,21 +32,5 @@
     
 ## topic_check -> sports
 > check_which_topic
-* sports
-    - utter_sport_continue
-
-## interactive_story_1
-* greet
-    - utter_what_is_name
-* my_name_is{"name": "Ben"}
-    - slot{"name": "Ben"}
-    - action_greet_user
-    - utter_nicetomeeyou
-    - utter_are_you_ready_to_start
-* affirm
-    - utter_we_can_talk_about_topics
-* decide_topic{"topics": "sports"}
-    - slot{"topics": "sports"}
-    - action_decide_topic
 * sports
     - utter_sport_continue
