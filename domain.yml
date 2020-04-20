@@ -15,7 +15,7 @@ actions:
   - utter_greet_name
   - utter_greet_noname
   - utter_movie_about
-  - utter_movie_continue
+  - utter_movie_old
   - utter_movie_end
   - utter_movie_follow_up
   - utter_movie_start
@@ -98,7 +98,7 @@ responses:
     - text: Hey there!
   utter_movie_about:
     - text: Can you tell me what it is about?
-  utter_movie_continue:
+  utter_movie_old:
     - text: I haven't seen {movie_name}. Is it an old movie?
   utter_movie_end:
     - text: I am probably gonna watch it then. Anything else I should know?
