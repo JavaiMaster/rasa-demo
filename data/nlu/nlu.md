@@ -1331,6 +1331,19 @@
 - Sports is what I live for!
 - I watch sports everyday every night
 - I love the skill required in sports
+- Yes I watch sports on TV
+- I watch sports everyday
+- Yes I do
+- I love watching Sports
+- I watch occasionally
+- I enjoy watching football
+- I enjoy watching hockey
+- I enjoy watching baseball
+- I watch soccer
+- I sometimes watch tennis
+- I often watch badminton
+- I love watching people play ping pong
+
 
 ## lookup: location
 data/nlu/lookups/location.txt
@@ -1482,3 +1495,14 @@ data/nlu/lookups/products.txt
 - My favourite movie of all time is [Slumdog Millionaire](movie_name)
 
 
+## intent: movie_old
+- It's not that old a movie. It's fairly new
+- It's kind of an old movie
+- Not really sure. 
+- It's a really new movie
+- It's somewhere in the early 2000's
+- I'm not really sure. I think so
+- It's pretty old 
+- It's not an old movie. It's not a new movie. It's somewhere in between.
+- It was released in 2006 so it's kind of old
+- I saw it last year so I guess it's kind of new

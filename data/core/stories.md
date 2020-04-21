@@ -21,7 +21,7 @@
 > check_which_topic
 * movie_name_action
     - utter_movie_old
-* out_of_scope
+* movie_old OR affirm
     - utter_movie_about
 * out_of_scope OR deny OR affirm
     - utter_movie_follow_up
