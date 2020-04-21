@@ -51,6 +51,7 @@ intents:
   - out_of_scope:
       use_entities: []
   - thank
+  - movie_old
 responses:
   utter_are_you_ready_to_start:
     - text: Are you ready to start talking to me?
