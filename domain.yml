@@ -39,7 +39,8 @@ intents:
       triggers: action_greet_user
   - sports
   - affirm
-  - greet
+  - greet:
+      triggers: utter_what_is_name
   - decide_topic:
       triggers: action_decide_topic
   - bye
@@ -136,8 +137,8 @@ responses:
   utter_what_is_name:
     - text: Hey there! Before we begin can you tell me your name?
 session_config:
-  carry_over_slots_to_new_session: true
-  session_expiration_time: 480
+  carry_over_slots_to_new_session: false
+  session_expiration_time: 600000
 slots:
   movie_name:
     initial_value: that movie

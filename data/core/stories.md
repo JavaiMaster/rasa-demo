@@ -1,21 +1,22 @@
-## conversation begin
+##conversation begin
 * greet
     - utter_what_is_name
-> check_ready_to_begin
-
-## check_ready_to_begin -> no
-> check_ready_to_begin
-* deny
-    - utter_too_bad
-    - utter_bye
-
-## check_ready_to_begin -> yes
-> check_ready_to_begin
+* my_name_is
+    - action_greet_user
 * affirm
     - utter_we_can_talk_about_topics
 * decide_topic
     - action_decide_topic
 > check_which_topic
+
+## check_ready_to_begin -> no
+* greet
+    - utter_what_is_name
+* my_name_is
+    - action_greet_user
+* deny
+    - utter_too_bad
+    - utter_bye
 
 ## topic_check -> movies
 > check_which_topic
