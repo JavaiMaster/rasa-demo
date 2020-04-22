@@ -146,7 +146,7 @@ slots:
   name:
     type: text
   topics:
-    type: text
+    type: categorical
     values:
       - sports
       - politics
