@@ -5,10 +5,7 @@
     - action_greet_user
 * affirm
     - utter_we_can_talk_about_topics
-* decide_topic
-    - action_decide_topic
 > check_which_topic
-
 
 ## check_ready_to_begin -> no
 * greet
@@ -21,6 +18,8 @@
 
 ## topic_check -> movies
 > check_which_topic
+* decide_topic
+    - action_decide_topic
 * movie_name_action
     - utter_movie_old
 * movie_old OR affirm
@@ -34,5 +33,31 @@
     
 ## topic_check -> sports
 > check_which_topic
+* decide_topic
+    - action_decide_topic  
 * sports
-    - utter_sport_continue
+    - utter_sport_fav_player
+* fav_player
+    - utter_sport_fav_moment
+* out_of_scope
+    - action_user_response
+    
+## topic_check -> sports
+> check_which_topic
+* decide_topic
+    - action_decide_topic
+* traveling
+    - utter_traveling_continue
+* travel_somewhere
+    - utter_traveling_end
+    
+## topic_check -> other
+> check_which_topic
+* decide_topic
+    - action_decide_topic
+    - utter_talk_other_continue
+    - action_decide_topic
+
+## fallback story
+* out_of_scope OR did_not_understand
+  - action_default_fallback

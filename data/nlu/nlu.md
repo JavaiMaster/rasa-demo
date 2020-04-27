@@ -643,7 +643,6 @@
 - hello sweet boy
 - hello there
 - hello world
-- hello, my name is [Charles Pfeffer](name)
 - hello?
 - hello]
 - hellooo
@@ -676,8 +675,6 @@
 - hi friend
 - hi friends
 - hi hi
-- hi i'm [Sandra Hernandez](name)
-- hi im [Amanda Anderson](name)
 - hi mrs rasa
 - hi pal!
 - hi sara
@@ -693,7 +690,6 @@
 - hlo
 - hola
 - howdy
-- i am [Karen Mease](name)
 - jojojo
 - jop
 - konichiwa
@@ -709,6 +705,12 @@
 - whats up
 - yo
 - yoo
+- High Sierra
+- High Sierra
+- High Sierra
+- que sera
+- que sera
+
 
 ## intent:handleinsult
 - FUCK
@@ -997,11 +999,11 @@
 ##intent: sports
 - Of course I watch sports! Who doesn't!?
 - I watch it everyday
-- I love football
-- I cannot imagine a life without basketball
-- I catch the news about tennis regularly
-- I'm a huge fan of cricket
-- I can watch football all day long
+- I love [football](sports_name)
+- I cannot imagine a life without [basketball](sports_name)
+- I catch the news about [tennis](sports_name) regularly
+- I'm a huge fan of [cricket](sports_name)
+- I can watch [football](sports_name) all day long
 - I love watching sports
 - Sports is my life
 - sports is a huge part of my life
@@ -1014,13 +1016,13 @@
 - Yes I do
 - I love watching Sports
 - I watch occasionally
-- I enjoy watching football
-- I enjoy watching hockey
-- I enjoy watching baseball
-- I watch soccer
-- I sometimes watch tennis
-- I often watch badminton
-- I love watching people play ping pong
+- I enjoy watching [football](sports_name)
+- I enjoy watching [hockey](sports_name)
+- I enjoy watching [baseball](sports_name)
+- I watch [soccer](sports_name)
+- I sometimes watch [tennis](sports_name)
+- I often watch [badminton](sports_name)
+- I love watching people play [ping pong](sports_name)
 
 
 ## lookup: location
@@ -1064,7 +1066,7 @@ data/nlu/lookups/products.txt
 
 ## intent: decide_topic
 - Great! Let's talk about [sports](topics)
-- I would like to choose [politics](topics)
+- I would like to choose [traveling](topics)
 - I choose [movies](topics)
 - Let's do [movies](topics)
 - I want to talk about [sports](topics)
@@ -1072,11 +1074,20 @@ data/nlu/lookups/products.txt
 - I like talking about [sports](topics)
 - I just love [movies](topics)
 - I enjoy [sports](topics) a lot
-- I find [politics](topics) to be very interesting
+- I enjoy [movies](topics) a lot
+- I enjoy [traveling](topics) a lot
+- I find [traveling](topics) to be very interesting
 - I would enjoy a good talk about [sports](topics)
+- I would enjoy a good talk about [movies](topics)
+- I would enjoy a good talk about [traveling](topics)
 - [movies](topics)
 - [sports](topics)
-- [politics](topics)
+- [traveling](topics)
+- I would love to talk about [traveling](topics)
+- I would love to talk about [sports](topics)
+- I would like to chat about [movies](topics)
+- Let's chat about [traveling](topics)
+- Let's talk about [movies](topics)
 
 ## intent: my_name_is
 - My name is [Mark](name)
@@ -1184,3 +1195,47 @@ data/nlu/lookups/products.txt
 - It's not an old movie. It's not a new movie. It's somewhere in between.
 - It was released in 2006 so it's kind of old
 - I saw it last year so I guess it's kind of new
+- It's a relatively new movie
+- It's very old. I watched it as a kid with my parents
+
+## intent: traveling
+- I love traveling. Let's talk about that
+- I want to see the world before I die
+- I love to travel and see the world
+- I would love to travel more and meet new people
+- Traveling is a hobby I really enjoy
+- I wonder what it would like to travel to a new place everyday
+- Traveling makes me feel so alive
+- I love traveling but I don't have enough money to travel
+- It's this really amazing feeling to travel to new places
+- Yes! I absolutely love traveling more than anything else
+- I'm so excited to always go on a trip somewhere new
+- I can't wait to travel somewhere once this quarantine is over
+
+
+## intent: did_not_understand
+- Google Speech Recognition could not understand audio
+- Didn't understand audio
+- Error
+
+## intent: fav_player
+- My favourite player is [Lebron James](fav_player)
+- [Michael Jordan](fav_player) is the absolute boss
+- There is no one better than [Wayne Gretzky](fav_player)
+- I like [Cristiano Ronaldo](fav_player) the best
+- Hands down [Messi](fav_player)
+- The best player ever is [Wayne Rooney](fav_player)
+- I don't have a favorite player
+- [Sachin Tendulakr](fav_player) is one of the greatest players to ever have lived
+- [MS Dhoni](fav_player)
+- [Adam Gilchrist](fav_player) is an absolute legend
+- I admire [Brett Lee](fav_player) more than anyone else
+
+
+## intent: travel_somewhere
+- I would love to just get out of the house
+- Anywhere is fine
+- I might travel to Indonesia or Bali
+- I'm going to get out of here and party
+- I would travel the whole damn world
+

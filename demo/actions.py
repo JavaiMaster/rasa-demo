@@ -3,7 +3,7 @@ import logging
 from datetime import datetime
 from typing import Any, Dict, List, Text, Union, Optional
 import json
-
+from rasa_sdk.events import FollowupAction
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormAction
@@ -13,13 +13,7 @@ from rasa_sdk.events import (
     ConversationPaused,
     EventType,
 )
-from demo.api import MailChimpAPI
-from demo.algolia import AlgoliaAPI
-from demo.discourse import DiscourseAPI
-from demo import config
-from demo.api import MailChimpAPI
-from demo.community_events import CommunityEvent
-from demo.gdrive_service import GDriveService
+import random
 
 logger = logging.getLogger(__name__)
 
@@ -76,6 +70,16 @@ class ActionDecideTopic(Action):
                 dispatcher.utter_message(template="utter_talk_sports")
                 dispatcher.utter_message(template="utter_sport_start")
                 return []
+            elif topic_name == "traveling":
+                dispatcher.utter_message(template="utter_talk_traveling")
+                dispatcher.utter_message(template="utter_traveling_start")
+                return []
+            elif topic_name is None:
+                dispatcher.utter_message(template="utter_talk_other")
+                topic_choose = random.choice(["movies", "sports", "traveling"])
+                return [SlotSet("topics", topic_choose), FollowupAction('utter_talk_other_continue'),
+                        FollowupAction("utter_talk_{}".format(topic_choose))]
+
         return []
 
 
