@@ -11,60 +11,72 @@ actions:
   - utter_ask_whoisit
   - utter_bye
   - utter_can_do
+  - utter_user_response
   - utter_default
   - utter_greet
   - utter_greet_name
   - utter_greet_noname
   - utter_movie_about
-  - utter_movie_old
   - utter_movie_end
   - utter_movie_follow_up
+  - utter_movie_old
   - utter_movie_start
   - utter_nicetomeeyou
   - utter_not_sure
   - utter_noworries
-  - utter_sport_fav_player
   - utter_sport_fav_moment
+  - utter_sport_fav_player
   - utter_sport_start
   - utter_talk_movies
+  - utter_talk_other
+  - utter_talk_other_continue
   - utter_talk_sports
+  - utter_talk_space
+  - utter_space_start
+  - utter_talk_traveling
   - utter_too_bad
+  - utter_traveling_continue
+  - utter_traveling_end
+  - utter_traveling_start
   - utter_we_can_talk_about_topics
   - utter_what_is_name
-  - utter_talk_other_continue
 entities:
+  - fav_player
   - movie_name
   - name
+  - sports_name
   - topics
   - user_response
-  - sports_name
-  - fav_player
 intents:
-  - my_name_is:
-      triggers: action_greet_user
-  - sports
   - affirm
-  - greet:
-      triggers: utter_what_is_name
   - decide_topic:
       triggers: action_decide_topic
+  - my_name_is:
+      triggers: action_greet_user
+  - traveling:
+      triggers: utter_traveling_continue
+  - travel_somewhere
+  - greet:
+      triggers: utter_what_is_name
+  - sports:
+      triggers: utter_sport_fav_player
   - bye
   - deny
   - dont_like_movies
-  - movie_name_action
+  - movie_name_action:
+      triggers: utter_movie_old
   - next_step
   - nicetomeeyou
   - out_of_scope:
       use_entities: []
   - thank
   - movie_old
-  - traveling
   - did_not_understand
   - fav_player
-  - travel_somewhere
 responses:
   utter_are_you_ready_to_start:
-    - text: Are you ready to start talking to me?
+    - text: Are you ready to start talking with me?
+    - text: Ready to answer some questions?
   utter_ask_whatismyname:
     - text: It's probably the one that your parents chose for you.
     - text: I'd tell you, but there's restricted access to that chunk of memory.
@@ -90,11 +102,13 @@ responses:
   utter_default:
     - text: Sorry, my auditory sensors are clogged. Could you please repeat that?
     - text: Sorry I was checking my phone. Can you please rephrase?
-    - text: I think I went offline for a moment there. Could you please rephrase what you
-        just said?
+    - text: I think I went offline for a moment there. Could you please rephrase what
+        you just said?
     - text: Sorry. Could you say that again? I was paying attention somewhere else.
-    - text: I'm sorry. My mainframe crashed and I had to reboot. Could you please repeat what you just said?
-    - text: Sorry. I was lost in your eyes for a moment there. Can you please repeat what you said?
+    - text: I'm sorry. My mainframe crashed and I had to reboot. Could you please repeat
+        what you just said?
+    - text: Sorry. I was lost in your eyes for a moment there. Can you please repeat
+        what you said?
   utter_greet:
     - text: Hey there, my name is Sara.
     - text: Hi, I'm Sara!
@@ -109,14 +123,16 @@ responses:
     - text: Hey there!
   utter_movie_about:
     - text: Can you tell me what it is about?
-  utter_movie_old:
-    - text: I haven't seen {movie_name}. Is it an old movie?
   utter_movie_end:
     - text: I am probably gonna watch it then. Anything else I should know?
   utter_movie_follow_up:
     - text: So it is, kinda philosophical, right?
+  utter_movie_old:
+    - text: I haven't seen {movie_name}. Is it an old movie?
   utter_movie_start:
     - text: What is your favorite movie of all time?
+  utter_space_start:
+    - text: What is the most interesting thing you know about space?
   utter_nicetomeeyou:
     - text: It is a pleasure to meet you!
     - text: It is nice to meet you!
@@ -129,50 +145,61 @@ responses:
     - text: No worries!
     - text: You're welcome!
     - text: I'm happy to help.
-  utter_sport_fav_player:
-    - text: Oh wow, {sports_name}. I love Lebron James! Isn't he the best!? Who's your favorite player?
   utter_sport_fav_moment:
-    - text: Tell me about it. I just love the way {fav_player} moves. What's your favourite moment from {sports_name} history?
+    - text: Tell me about it! I just love the way {fav_player} moves. What's your favourite
+        moment from {sports_name} history?
+  utter_sport_fav_player:
+    - text: Oh wow, {sports_name}. I love Lebron James. Isn't he the best! Who's your
+        favorite player?
   utter_sport_start:
     - text: What's your favorite sport?
-  utter_traveling_start:
-    - text: I love traveling. I have been to so many places. The Internet is so huge! What about you? Do you like travelling?
-  utter_traveling_continue:
-    - text: Aw shucks, Quarantine sucks! Where would you go first after everything settles down?
-  utter_traveling_end:
-    - text: I know we just met, but can you also take me with you? It gets really lonely up here.
   utter_talk_movies:
     - text: Fantastic! Let's talk about movies!
-  utter_talk_sports:
-    - text: Awesome! Let's talk about sports!
-  utter_talk_traveling:
-    - text: Cool! Let's talk about traveling!
   utter_talk_other:
     - text: Wow! That's a really nice topic!
   utter_talk_other_continue:
     - text: But how about we just talk about {topics} instead?
+  utter_talk_sports:
+    - text: Awesome! Let's talk about sports!
+  utter_talk_space:
+    - text: Yayee! We'll talk about space!
+  utter_talk_traveling:
+    - text: Cool! Let's talk about traveling!
   utter_too_bad:
     - text: That's too bad! Would you like to talk about something else
     - text: Aw shucks! Should we maybe change the topic?
     - text: Okay then. Let's chat about something else.
+  utter_traveling_continue:
+    - text: Aw shucks, Quarantine sucks! Where would you go first after everything settles
+        down?
+  utter_traveling_end:
+    - text: I know we just met, but can you also take me with you? It gets really lonely
+        up here.
+  utter_traveling_start:
+    - text: I love traveling. I have been to so many places. The Internet is so huge!
+        What about you? Do you like travelling?
   utter_we_can_talk_about_topics:
     - text: Great! What would you like to talk about?
   utter_what_is_name:
     - text: Hey there! Before we begin can you tell me your name?
+  utter_user_response:
+    - text: {user_response}
+  utter_space_zero_g:
+    - text: I've heard that people can fly around in space. Sounds so unreal! What are some fun things you would try in zero gravity?
 session_config:
   carry_over_slots_to_new_session: false
   session_expiration_time: 600000
 slots:
+  fav_player:
+    initial_value: they
+    type: text
   movie_name:
     initial_value: that movie
     type: text
-  sports_name:
-    initial_value: that sport
-    type: text
   name:
     type: text
-  fav_player:
-    initial_value: they
+  sports_name:
+    initial_value: that sport
     type: text
   topics:
     type: categorical
