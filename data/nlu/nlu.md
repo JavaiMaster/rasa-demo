@@ -1088,6 +1088,14 @@ data/nlu/lookups/products.txt
 - I would like to chat about [movies](topics)
 - Let's chat about [traveling](topics)
 - Let's talk about [movies](topics)
+- I would enjoy a good talk about [space](topics)
+- [movies](topics)
+- [sports](topics)
+- [traveling](topics)
+- [space](topics)
+- I would love to talk about [space](topics)
+- Let's chat about [space](topics)
+- Let's talk about [space](topics)
 
 ## intent: my_name_is
 - My name is [Mark](name)
@@ -1199,7 +1207,7 @@ data/nlu/lookups/products.txt
 - It's very old. I watched it as a kid with my parents
 
 ## intent: traveling
-- I love traveling. Let's talk about that
+- I love traveling
 - I want to see the world before I die
 - I love to travel and see the world
 - I would love to travel more and meet new people
@@ -1211,6 +1219,10 @@ data/nlu/lookups/products.txt
 - Yes! I absolutely love traveling more than anything else
 - I'm so excited to always go on a trip somewhere new
 - I can't wait to travel somewhere once this quarantine is over
+- I would like to just buy a plane ticket and go far far away
+- I would love to go out and just enjoy the world
+- Traveling makes me really happy! I try to go out once a week
+- I've visited over 18 countries and I can't wait to go out more.
 
 
 ## intent: did_not_understand

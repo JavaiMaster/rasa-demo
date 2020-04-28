@@ -74,9 +74,13 @@ class ActionDecideTopic(Action):
                 dispatcher.utter_message(template="utter_talk_traveling")
                 dispatcher.utter_message(template="utter_traveling_start")
                 return []
+            elif topic_name == "space":
+                dispatcher.utter_message(template="utter_talk_space")
+                dispatcher.utter_message(template="utter_space_start")
+                return []
             elif topic_name is None:
                 dispatcher.utter_message(template="utter_talk_other")
-                topic_choose = random.choice(["movies", "sports", "traveling"])
+                topic_choose = random.choice(["movies", "sports", "traveling", "space"])
                 return [SlotSet("topics", topic_choose), FollowupAction('utter_talk_other_continue'),
                         FollowupAction("utter_talk_{}".format(topic_choose))]
 

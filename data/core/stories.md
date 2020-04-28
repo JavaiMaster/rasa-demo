@@ -18,7 +18,8 @@
 
 ## topic_check -> movies
 > check_which_topic
-* decide_topic
+* decide_topic{"topics": "movies"}
+    - slot{"topics": "movies"}    
     - action_decide_topic
 * movie_name_action
     - utter_movie_old
@@ -33,7 +34,8 @@
     
 ## topic_check -> sports
 > check_which_topic
-* decide_topic
+* decide_topic{"topics": "sports"}
+    - slot{"topics": "sports"}    
     - action_decide_topic  
 * sports
     - utter_sport_fav_player
@@ -41,15 +43,27 @@
     - utter_sport_fav_moment
 * out_of_scope
     - action_user_response
-    
-## topic_check -> sports
+
+## topic_check -> traveling
 > check_which_topic
-* decide_topic
+* decide_topic{"topics": "traveling"}
+    - slot{"topics": "traveling"}
     - action_decide_topic
 * traveling
     - utter_traveling_continue
 * travel_somewhere
     - utter_traveling_end
+
+## topic_check -> space
+> check_which_topic
+* decide_topic{"topics": "space"}
+    - slot{"topics": "space"}
+    - action_decide_topic
+* out_of_scope
+    - utter_space_zero_g
+* out_of_scope
+    - action_user_response
+    - utter_user_response
     
 ## topic_check -> other
 > check_which_topic
