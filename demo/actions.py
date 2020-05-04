@@ -58,7 +58,7 @@ class ActionDecideTopic(Action):
 
     def run(self, dispatcher, tracker, domain) -> List[EventType]:
         intent = tracker.latest_message["intent"].get("name")
-        topic_name = next(tracker.get_latest_entity_values("topics"), None)
+        topic_name = next(tracker.get_latest_entity_values("topics"), None).lower()
         print("intent is ", intent)
         if intent == "decide_topic":
             print("topic is ", topic_name)

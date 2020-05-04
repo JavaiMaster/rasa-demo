@@ -15,8 +15,11 @@ import speech_recognition as sr
 
 logger = logging.getLogger(__name__)
 
+user_utter = "default"
+
 
 def google_asr(audio_file):
+    global user_utter
     API_key = ""
     r = sr.Recognizer()
     with sr.WavFile(audio_file) as source:
@@ -31,6 +34,7 @@ def google_asr(audio_file):
         # instead of `r.recognize_google(audio)`
         text = r.recognize_google(audio)
         print("You said: " + text)
+        user_utter = text
         return text
     except sr.UnknownValueError:
         print("Google Speech Recognition could not understand audio")
@@ -67,7 +71,7 @@ class SocketIOOutput(OutputChannel):
     async def _send_audio_message(self, socket_id, response, **kwargs: Any):
         # type: (Text, Any) -> None
         """Sends a message to the recipient using the bot event."""
-
+        global user_utter
         ts = time.time()
         OUT_FILE = str(ts) + '.wav'
         link = "http://localhost:8888/" + OUT_FILE
@@ -78,7 +82,8 @@ class SocketIOOutput(OutputChannel):
 
         # wav_norm = self.tts_predict(MODEL_PATH, response['text'], CONFIG, use_cuda, OUT_FILE)
 
-        await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link}, room=socket_id)
+        await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link, "user_utter": user_utter},
+                            room=socket_id)
 
     async def send_text_message(self, recipient_id: Text, message: Text, **kwargs: Any) -> None:
         """Send a message through this channel."""
@@ -162,6 +167,7 @@ class SocketIOInput(InputChannel):
                 path = os.path.dirname(__file__)
 
                 message = google_asr(received_file)
+                print(message, "message is ***********")
 
                 await sio.emit(self.user_message_evt, {"text": message}, room=sid)
 
