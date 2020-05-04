@@ -17,8 +17,11 @@ from transformers import pipeline
 logger = logging.getLogger(__name__)
 nlp = pipeline('sentiment-analysis')
 
+user_utter = "default"
+
 
 def google_asr(audio_file):
+    global user_utter
     API_key = ""
     r = sr.Recognizer()
     with sr.WavFile(audio_file) as source:
@@ -35,6 +38,7 @@ def google_asr(audio_file):
         print("You said: " + text)
         # print(liwc.parse(text.split(' ')))
         print(nlp(text))
+        user_utter = text
         return text
     except sr.UnknownValueError:
         print("Google Speech Recognition could not understand audio")
@@ -70,19 +74,21 @@ class SocketIOOutput(OutputChannel):
         self.namespace = namespace
 
     async def _send_audio_message(self, socket_id, response, **kwargs: Any):
-        # type: (Text, Any) -> None
+        # #type: (Text, Any) -> None
         """Sends a message to the recipient using the bot event."""
-
+        global user_utter
         ts = time.time()
 
         OUT_FILE = str(ts) + '.wav'
         link = "https://app.chattybot.us/bingo/" + OUT_FILE
         language = 'en'
         voice = gTTS(text=response['text'], lang=language, slow=False)
-        voice.save("../rasa_data/bingo/"+OUT_FILE)
+        voice.save("../rasa_data/bingo/" + OUT_FILE)
 
-        await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link}, room=socket_id,
-                            namespace=self.namespace)
+        # wav_norm = self.tts_predict(MODEL_PATH, response['text'], CONFIG, use_cuda, OUT_FILE)
+
+        await self.sio.emit(self.bot_message_evt, {'text': response['text'], "link": link, "user_utter": user_utter},
+                            room=socket_id)
 
     async def send_text_message(self, recipient_id: Text, message: Text, **kwargs: Any) -> None:
         """Send a message through this channel."""
@@ -173,6 +179,7 @@ class SocketIOInput(InputChannel):
                 path = os.path.dirname(__file__)
 
                 message = google_asr(received_file)
+                print(message, "message is ***********")
 
                 await sio.emit(self.user_message_evt, {"text": message}, room=sid, namespace=self.namespace)
 
