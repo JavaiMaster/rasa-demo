@@ -1088,6 +1088,11 @@ data/nlu/lookups/products.txt
 - [Daniel](name)
 - [Donald Trump](name)
 - [Barack Obama](name)
+- My name is [Bobby](name)
+- my name's [Glover](name).
+- this is [Harry](name)
+- my name's [jim paulo](name).
+- my name is [chris pratt](name).
 
 ## intent: movie_name_action
 - My favourite movie is [Star Wars](movie_name)
@@ -1155,8 +1160,26 @@ data/nlu/lookups/products.txt
 ## intent: movie_old
 - It's not that old a movie. It's fairly new
 - It's kind of an old movie
+- It's kind of an old movie
+- it's like an old movie.
+- a great old movie
+- it's a very old movie.
+- an old movie.
+- it's an old film.
+- it's about an old movie.
+- it's just an old movie.
 - Not really sure. 
 - It's a really new movie
+- It's a really new movie
+- it's a very new film.
+- a new movie with lots of stars.
+- it's a new movie.
+- a really new movie.
+- that's a really new film, and this is the first of the year's major premie
+- it's a new movie
+- it's a really new movie.
+- it's a really new one.
+- it's a great new movie.
 - It's somewhere in the early 2000's
 - I'm not really sure. I think so
 - It's pretty old 
@@ -1174,6 +1197,26 @@ data/nlu/lookups/products.txt
 - Traveling is a hobby I really enjoy
 - I wonder what it would like to travel to a new place everyday
 - Traveling makes me feel so alive
+- Traveling makes me feel so alive
+- travel reminds me of my life.
+- the fact that i fly makes me feel alive.
+- travel makes me so sure
+- the travel makes me feel so alive.
+- going around makes me feel so alive.
+- travel makes me feel so alive
+- traveling brings me alive.
+- travel helps me feel alive with a heart attack.
+- travel makes me feel very alive.
+- i feel alive on the travel
+- i feel like traveling is alive.
+- traveling makes me feel alive.
+- the travel makes me very... alive.
+- travel helps me feel alive.
+- it makes me feel alive...
+- traveling makes me so alive.
+- i'm glad you're traveling that makes me so alive.
+- travel reminds me of being alive!
+- i feel alive when i travel.
 - I love traveling but I don't have enough money to travel
 - It's this really amazing feeling to travel to new places
 - Yes! I absolutely love traveling more than anything else
@@ -1183,6 +1226,27 @@ data/nlu/lookups/products.txt
 - I would love to go out and just enjoy the world
 - Traveling makes me really happy! I try to go out once a week
 - I've visited over 18 countries and I can't wait to go out more.
+- I love to travel and see the world
+- i travel, i see the world.
+- he loved to travel everywhere and see the world.
+- i'm on a trip and i'm going to see the world.
+- i 'd like to come and see the world.
+- i love traveling and talking to the world.
+- i often travel and see the world.
+- i love travelling.
+- i love to travel, to the world.
+- i love to travel and see the world.
+- i love travelling and i see everything
+- i'm enjoying the journey and looking the world
+- i 'd like to go out, see the world.
+- i really love travel... i love going around the world
+- i like to travel and see the world.
+- i love traveling and seeing the world as the world.
+- i like to travel and visit
+- i love to go and see the world.
+- i like to travel and experience the world.
+- i travel and see the world!
+- i love traveling for fun and seeing the world.
 
 
 ## intent: did_not_understand

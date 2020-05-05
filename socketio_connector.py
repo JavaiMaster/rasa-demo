@@ -172,7 +172,10 @@ class SocketIOInput(InputChannel):
                 message = data['message']
             else:
                 ##receive audio
-                received_file = '../wav_data/output_' + sid + "****" + str(self.interaction) + '.wav'
+                wav_path = "../wav_data/"
+                os.makedirs(wav_path + sid, exist_ok=True)
+
+                received_file = wav_path + sid + "/interaction_" + str(self.interaction) + '.wav'
                 self.interaction += 1
 
                 urllib.request.urlretrieve(data['message'], received_file)
