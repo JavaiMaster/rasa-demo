@@ -41,7 +41,7 @@ class ActionGreetUser(Action):
         name_entity = next(tracker.get_latest_entity_values("name"), None)
         print("intent is ", intent)
         if intent == "my_name_is":  # or (intent == "enter_data" and name_entity):
-            if name_entity and name_entity.lower() not in ["sara", "sarah", "desire"]:
+            if name_entity and name_entity.lower() not in ["robin"]:
                 dispatcher.utter_message(template="utter_greet_name", name=name_entity)
             else:
                 dispatcher.utter_message(template="utter_greet_noname")
@@ -97,3 +97,46 @@ class ActionUserResponse(Action):
         problem = tracker.latest_message.get("text")
 
         return [SlotSet("user_response", problem)]
+
+
+class MovieOldForm(FormAction):
+    """Form to collect extra information about a movie"""
+
+    def name(self) -> Text:
+        """Unique identifier of the form"""
+
+        return "movie_old_form"
+
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        """A list of required slots that the form has to fill"""
+
+        return ["movie_old", "movie_detail", "movie_philosophy", "movie_anything_else"]
+
+    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+        """A dictionary to map required slots to
+            - an extracted entity
+            - intent: value pairs
+            - a whole message
+            or a list of them, where a first match will be picked"""
+
+        return {
+            "movie_old": self.from_text(),
+            "movie_detail": self.from_text(),
+            "movie_philosophy": self.from_text(),
+            "movie_anything_else": self.from_text()
+        }
+
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[Dict]:
+        """Define what the form has to do
+            after all required slots are filled"""
+
+        # utter submit template
+        # print("came here")
+        dispatcher.utter_message(template="utter_bye")
+        return []

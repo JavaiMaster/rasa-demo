@@ -7,19 +7,15 @@
 - I accept
 - I accept.
 - I agree
-- I am using it
-- I changed my mind. I want to accept it
 - I do
 - I get it
 - I guess so
-- I have used it in the past
 - I will
 - I'd absolutely love that
 - I'm sure I will!
-- I'm using it
 - Nice
 - OK
-- Ofcourse
+- Of course
 - Oh yes
 - Oh, ok
 - Ok
@@ -56,20 +52,18 @@
 - ah ok
 - alright
 - alright, cool
-- amayzing
+- amazing
 - amazing!
 - awesome
 - awesome!
 - confirm
 - cool
 - cool :)
-- cool story bro
 - cool!
-- coolio
 - definitely yes without a doubt
 - done
 - fair enough
-- fcourse
+- of course
 - fine
 - fuck yeah!
 - go
@@ -104,8 +98,8 @@
 - nice
 - not bad
 - of course
-- ofcoure i do
-- ofcourse
+- of coure i do
+- of course
 - oh awesome!
 - oh cool
 - oh good !!
@@ -117,10 +111,10 @@
 - ok good
 - ok great
 - ok i accept
-- ok sara
+- ok robin
 - ok, I behave now
 - ok, I understood
-- ok, Sara
+- ok, Robin
 - ok...
 - okay
 - okay cool
@@ -224,14 +218,25 @@
 - ys
 - yup
 - yyeeeh
+- Yes I am
+- yes i am
+- yea I am ready
+- yea I'm ready
+- I'm ready yea
+- I am ready yes
+- yes I am ready
+- yes I ready
+- yeah sure whatever you want to talk about
+- yes. we can talk about anything
+- I am ready to talk about anything
 
 ## intent:ask_howdoing
 - Ahoy matey how are you?
 - Are you ok?
 - Do you feel good?
 - Do you have a great day?
-- HI Sara, what are you up to?
-- Hi Sara! How are you?
+- HI Robin, what are you up to?
+- Hi Robin! How are you?
 - How are You?
 - How are things?
 - How are you
@@ -262,7 +267,7 @@
 - hey how are you?
 - hi how are you?
 - hi how u doing
-- hi sara, how are you?
+- hi Robin, how are you?
 - how ?
 - how are things going
 - how are things with you?
@@ -308,7 +313,7 @@
 - what are you up to?
 - what's good
 - what's up
-- what's up sara
+- what's up Robin
 - what's up?
 - whatchcha doing
 - whatchya upto ?
@@ -535,29 +540,29 @@
 - HEY
 - HEllo
 - HI
-- HI Sara
+- HI Robin
 - Hallo
 - Hei
 - Hellllooooooo
 - Hello
 - Hello Bot
 - Hello Rasa
-- Hello Sara
-- Hello sara
+- Hello Robin
+- Hello robin
 - Hello!
 - Hey
-- Hey Sara
+- Hey Robin
 - Hey bot
 - Heya
 - Heylo
 - Hi
-- Hi Sara
-- Hi Sara!
+- Hi Robin
+- Hi Robin!
 - Hi bot
 - Hi man
 - Hi rasa
-- Hi sara
-- Hi sara..
+- Hi robin
+- Hi robin..
 - Hi there
 - Hi!
 - Hi'
@@ -582,24 +587,24 @@
 - greetings
 - hai
 - hallo
-- hallo sara
+- hallo robin
 - halloo
 - halloooo
 - halo
-- halo sara
+- halo robin
 - heeey
 - heelio
 - hell9o
 - hellio
 - hello
-- hello Sara
+- hello Robin
 - hello everybody
 - hello friend
 - hello hi
 - hello is anybody there
 - hello it is me again
 - hello robot
-- hello sara
+- hello robin
 - hello sweatheart
 - hello sweet boy
 - hello there
@@ -616,13 +621,13 @@
 - hey hey
 - hey let's talk
 - hey rasa
-- hey sara
+- hey robin
 - hey ther
 - hey there
 - hey there boy
 - hey there..
 - hey, let's talk
-- hey, sara!
+- hey, robin!
 - heya
 - heyho
 - heyo
@@ -638,7 +643,7 @@
 - hi hi
 - hi mrs rasa
 - hi pal!
-- hi sara
+- hi robin
 - hi there
 - hi there it's me
 - hi!
@@ -655,7 +660,7 @@
 - jop
 - konichiwa
 - merhaba
-- ola sara
+- ola robin
 - rasa hello
 - salut
 - sup
@@ -666,11 +671,11 @@
 - whats up
 - yo
 - yoo
-- High Sierra
-- High Sierra
-- High Sierra
-- que sera
-- que sera
+- hey Robin
+- hallo robin
+- hi there robin
+- red robin
+- hello robin
 
 
 ## intent:handleinsult
@@ -719,7 +724,7 @@
 - fuck u
 - fuck you
 - fuck you machine learning bot
-- fuck you sara
+- fuck you robin
 - fuck you!
 - fucking stupid
 - fucking work
@@ -735,7 +740,7 @@
 - insult you
 - ok fuck you
 - ok shut up
-- sara you look like a burnt sparrow
+- robin you look like a burnt sparrow
 - shit
 - shit bot
 - shut up asshole
@@ -808,7 +813,7 @@
 - Great to meet you!
 - Great to meet you.
 - Happy to get to see you.
-- Hi Sara, just wanted to test you
+- Hi Robin, just wanted to test you
 - Hi, glad to meet you.
 - Hi, nice to meet you!
 - I am glad I met you.
@@ -856,7 +861,7 @@
 - de que lugar eres?
 - epdi iruka
 - eres humana
-- kalhmera sara ti kaneis
+- kalhmera robin ti kaneis
 - kannst du auch deutsch?
 - kannst du dies auch auf deutsch?
 - oui je besoine de l'aide
@@ -922,7 +927,7 @@
 - Cool. Thanks
 - Great, thanks
 - Thank you
-- Thank you Sara
+- Thank you Robin
 - Thank you so much
 - Thank's!
 - Thanks
@@ -938,7 +943,7 @@
 - danke
 - great thanks
 - ok thanks
-- ok thanks sara
+- ok thanks robin
 - ok thanks!
 - perfect thank you
 - thank u
@@ -1151,21 +1156,8 @@ data/nlu/lookups/products.txt
 - My favourite movie of all time is [Game of Thrones](movie_name)
 - My favourite movie of all time is [Gladiator](movie_name)
 - My favourite movie of all time is [Slumdog Millionaire](movie_name)
-
-
-## intent: movie_old
-- It's not that old a movie. It's fairly new
-- It's kind of an old movie
-- Not really sure. 
-- It's a really new movie
-- It's somewhere in the early 2000's
-- I'm not really sure. I think so
-- It's pretty old 
-- It's not an old movie. It's not a new movie. It's somewhere in between.
-- It was released in 2006 so it's kind of old
-- I saw it last year so I guess it's kind of new
-- It's a relatively new movie
-- It's very old. I watched it as a kid with my parents
+- I really like [How to Train your Dragon](movie_name)
+- I really enjoy [12 Angry Men](movie_name)
 
 ## intent: traveling
 - I love traveling

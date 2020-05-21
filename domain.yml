@@ -16,10 +16,10 @@ actions:
   - utter_greet
   - utter_greet_name
   - utter_greet_noname
-  - utter_movie_about
-  - utter_movie_end
-  - utter_movie_follow_up
-  - utter_movie_old
+  - utter_ask_movie_detail
+  - utter_ask_movie_anything_else
+  - utter_ask_movie_philosophy
+  - utter_ask_movie_old
   - utter_movie_start
   - utter_nicetomeeyou
   - utter_not_sure
@@ -63,8 +63,7 @@ intents:
   - bye
   - deny
   - dont_like_movies
-  - movie_name_action:
-      triggers: utter_movie_old
+  - movie_name_action
   - next_step
   - nicetomeeyou
   - out_of_scope:
@@ -88,7 +87,7 @@ responses:
     - text: Unfortunately I haven't been programmed with the amount of necessary philosophy
         knowledge to answer that.
   utter_ask_whoisit:
-    - text: I'm Chatty Bot, the Talking bot!
+    - text: I'm Robin, the Chatty bot!
   utter_bye:
     - text: Goodbye!
     - text: Bye!
@@ -110,9 +109,9 @@ responses:
     - text: Sorry. I was lost in your eyes for a moment there. Can you please repeat
         what you said?
   utter_greet:
-    - text: Hey there, my name is Sara.
-    - text: Hi, I'm Sara!
-    - text: Hi! My name's Sara.
+    - text: Hey there, my name is Robin.
+    - text: Hi, I'm Robin!
+    - text: Hi! My name's Robin.
   utter_greet_name:
     - text: Hi, {name}!
     - text: Hello, {name}!
@@ -121,13 +120,13 @@ responses:
     - text: Hey!
     - text: Hi!
     - text: Hey there!
-  utter_movie_about:
+  utter_ask_movie_detail:
     - text: Can you tell me what it is about?
-  utter_movie_end:
+  utter_ask_movie_anything_else:
     - text: I am probably gonna watch it then. Anything else I should know?
-  utter_movie_follow_up:
+  utter_ask_movie_philosophy:
     - text: So it is, kinda philosophical, right?
-  utter_movie_old:
+  utter_ask_movie_old:
     - text: I haven't seen {movie_name}. Is it an old movie?
   utter_movie_start:
     - text: What is your favorite movie of all time?
@@ -209,5 +208,20 @@ slots:
       - movies
       - space
       - __other__
-  user_response:
-    type: text
+  requested_slot:
+    type: unfeaturized
+  movie_detail:
+    type: unfeaturized
+    auto_fill: false
+  movie_philosophy:
+    type: unfeaturized
+    auto_fill: false
+  movie_anything_else:
+    type: unfeaturized
+    auto_fill: false
+  movie_old:
+    type: unfeaturized
+    auto_fill: false
+forms:
+  - movie_old_form
+

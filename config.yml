@@ -22,8 +22,9 @@ policies:
       dialogue: [512, 1024, 512]
       label: [512, 1024, 512]
     number_of_transformer_layers: 4
+  - name: FormPolicy
   - name: MappingPolicy
-  - name: "FallbackPolicy"
+  - name: FallbackPolicy
     nlu_threshold: 0.4
     core_threshold: 0.3
     fallback_action_name: "action_default_fallback"
